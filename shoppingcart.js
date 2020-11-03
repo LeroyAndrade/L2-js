@@ -2,15 +2,16 @@ function DagOmzet() {
     let omzet =0;
     let klant =0;
     let alleOmzet; alleOmzet+= omzet;
-
+  
     this.voegToeAanDagOmzet = function (klantTotaal) {
         //omzet += omzet + klantTotaal;
         omzet += klantTotaal;
-        klant +=1;
+   
         return omzet;
     }
 
     this.totaalKlanten = function () {
+     
     return klant;
  }
 
@@ -113,7 +114,8 @@ klant0.wijzigAankopen(1,1,1);
 klant1.wijzigAankopen(1,1,0);
 
 
-console.log('Totaalbedrag in winkelmand: ' + klant0.teBetalen());
+console.log('Totaalbedrag in winkelmand: van klant 1: ' + klant0.teBetalen());
+console.log('Totaalbedrag in winkelmand: van klant 2: ' + klant1.teBetalen());
 //voeg bedrag toe aan totaal omzet
 
 let dagomzet = new DagOmzet();
@@ -124,6 +126,9 @@ dagomzet.voegToeAanDagOmzet(klant1.teBetalen());
 
 
 console.log('De totale dagomzet bedraagt: ' + dagomzet.voegToeAanDagOmzet(0));
-console.log('Klanten bedraagt: ' + dagomzet.totaalKlanten());
+//console.log('Klanten bedraagt: ' + dagomzet.totaalKlanten());
 
-// for (let i=0; i< )
+/* for (let i=0; i<dagomzet.totaalKlanten(); i++){
+dagomzet.voegToeAanDagOmzet("klant"+[i].teBetalen());
+}
+*/
