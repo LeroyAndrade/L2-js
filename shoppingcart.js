@@ -1,14 +1,17 @@
-function Dagomzet() {
-    let omzet = 0;
+function DagOmzet() {
+    let omzet =0;
+    let klant =0;
+    let alleOmzet; alleOmzet+= omzet;
 
-    this.voegToeAanDagomzet = function (klantTotaal) {
-        omzet = omzet + klantTotaal;
+    this.voegToeAanDagOmzet = function (klantTotaal) {
+        //omzet += omzet + klantTotaal;
+        omzet += klantTotaal;
+        klant +=1;
         return omzet;
     }
 
-    this.totaalDagOmzet = function (klantTotaal) {
-     omzet = omzet + klantTotaal;
-     return omzet;
+    this.totaalKlanten = function () {
+    return klant;
  }
 
 }
@@ -17,7 +20,7 @@ function Winkelmand() {
     let totaalBedrag = 0;
 
     this.getTotaalBedrag = function () {
-     Dagomzet();
+     DagOmzet();
         return totaalBedrag;
     }
 
@@ -87,6 +90,7 @@ function Winkelmand() {
 
 
 function Aankopen() {
+
     let winkelmand = new Winkelmand();
 
     this.wijzigAankopen = function (snoep, chocola, koek) {
@@ -94,19 +98,32 @@ function Aankopen() {
     };
 
     this.teBetalen = function () {
+    
         return winkelmand.getTotaalBedrag();
     }
 }
 
-let klant = new Aankopen();
-//Alle bedragen worden nu wel opgeteld
-klant.wijzigAankopen(1,1,1);
+let klant0 = new Aankopen();
+let klant1 = new Aankopen();
 
-console.log('Totaalbedrag in winkelmand: ' + klant.teBetalen());
+
+let dagomz = new DagOmzet();
+//Alle bedragen worden nu wel opgeteld
+klant0.wijzigAankopen(1,1,1);
+klant1.wijzigAankopen(1,1,0);
+
+
+console.log('Totaalbedrag in winkelmand: ' + klant0.teBetalen());
 //voeg bedrag toe aan totaal omzet
 
-let dagomzet = new Dagomzet();
-dagomzet.voegToeAanDagomzet(klant.teBetalen());
+let dagomzet = new DagOmzet();
+
+dagomzet.voegToeAanDagOmzet(klant0.teBetalen());
+dagomzet.voegToeAanDagOmzet(klant1.teBetalen());
 
 
-console.log('De totale dagomzet bedraagt: ' + dagomzet.voegToeAanDagomzet(0));
+
+console.log('De totale dagomzet bedraagt: ' + dagomzet.voegToeAanDagOmzet(0));
+console.log('Klanten bedraagt: ' + dagomzet.totaalKlanten());
+
+// for (let i=0; i< )
